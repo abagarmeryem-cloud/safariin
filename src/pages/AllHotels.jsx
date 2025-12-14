@@ -35,13 +35,13 @@ const RadioButton = ({ label, selected = false, onChange = () => {} }) => {
 function AllHotels() {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-  const searchQuery = searchParams.get('search')?.toLowerCase() || ''
+  const searchQuery = searchParams.get('search')?.toLowerCase() || '';
   const navigate = useNavigate()
   const [openFilters, setOpenFilters] = useState(true)
   const [selectedRoomTypes, setSelectedRoomTypes] = useState([])
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([])
   const [selectedSortOption, setSelectedSortOption] = useState('')
-  const roomTypes = ['Standard Room', 'Double Room', 'Suite']
+  const roomTypes = ['Single Room', 'Double Room', 'Suite']
   const priceRanges = [
     '0 to 20',
     '21 to 35',
@@ -58,9 +58,14 @@ function AllHotels() {
   const filteredAndSortedHotels = useMemo(() => {
     let filtered = Hotels
     // Filter by room types
-    if (selectedRoomTypes.length > 0) {
-      filtered = filtered.filter((hotel) =>
-        hotel.rooms.some((room) => selectedRoomTypes.includes(room.type))
+    if (searchQuery) {
+      filtered = filtered.filter(
+        (hotel) =>
+          hotel.name.toLowerCase().includes(searchQuery) ||
+          hotel.location.address.toLowerCase().includes(searchQuery) ||
+          hotel.rooms.some((room) =>
+            room.type.toLowerCase().includes(searchQuery)
+          )
       )
     }
     // Filter by price ranges
