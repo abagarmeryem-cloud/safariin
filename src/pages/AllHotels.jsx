@@ -34,12 +34,14 @@ const RadioButton = ({ label, selected = false, onChange = () => {} }) => {
 
 // Temporary placeholder pages (Personne 2 & 3 will replace later)
 function AllHotels() {
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const searchQuery = searchParams.get('search')?.toLowerCase() || ''
   const navigate = useNavigate()
   const [openFilters, setOpenFilters] = useState(true)
   const [selectedRoomTypes, setSelectedRoomTypes] = useState([])
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([])
   const [selectedSortOption, setSelectedSortOption] = useState('')
-  const city = location.state?.city
   const roomTypes = ['Standard Room', 'Double Room', 'Suite', 'Deluxe Room']
   const priceRanges = [
     '0 to 20',
@@ -99,9 +101,7 @@ function AllHotels() {
       >
         <div>
           <div className="flex-1 flex-col items-start text-left">
-            <h1 className="font-serif text-4xl md:text-[40px]">
-              All Hotels
-            </h1>
+            <h1 className="font-serif text-4xl md:text-[40px]">All Hotels</h1>
           </div>
           {filteredAndSortedHotels.map((room) => (
             <div
