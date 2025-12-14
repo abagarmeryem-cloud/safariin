@@ -12,11 +12,12 @@ const Checkbox = ({ label, selected = false, onChange = () => {} }) => {
         onChange={(e) => onChange(e.target.checked, label)}
         className="w-4 h-4 text-customBlue bg-gray-100 border-gray-300 rounded focus:ring-safari-light/70 focus:ring-2"
       />
+      {/*focus:ring-safari-light/70 focus:ring-2 : anneau de focus bleu clair quand la case est sélectionnée au clavier.*/}
       <span className="font-light select-none">{label}</span>
+      {/*select-none : empêche la sélection du texte quand lutilisateur clique. */}
     </label>
   )
 }
-
 const RadioButton = ({ label, selected = false, onChange = () => {} }) => {
   return (
     <label className="flex gap-3 items-center cursor-pointer mt-3 text-xs hover:bg-safari-light/70 px-3 py-2 rounded-lg transition-colors">
@@ -31,8 +32,6 @@ const RadioButton = ({ label, selected = false, onChange = () => {} }) => {
     </label>
   )
 }
-
-// Temporary placeholder pages (Personne 2 & 3 will replace later)
 function AllHotels() {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
@@ -42,7 +41,7 @@ function AllHotels() {
   const [selectedRoomTypes, setSelectedRoomTypes] = useState([])
   const [selectedPriceRanges, setSelectedPriceRanges] = useState([])
   const [selectedSortOption, setSelectedSortOption] = useState('')
-  const roomTypes = ['Standard Room', 'Double Room', 'Suite', 'Deluxe Room']
+  const roomTypes = ['Standard Room', 'Double Room', 'Suite']
   const priceRanges = [
     '0 to 20',
     '21 to 35',
@@ -56,17 +55,14 @@ function AllHotels() {
     'Prix décroissant',
     'Du plus récent au plus ancien',
   ]
-
   const filteredAndSortedHotels = useMemo(() => {
     let filtered = Hotels
-
     // Filter by room types
     if (selectedRoomTypes.length > 0) {
       filtered = filtered.filter((hotel) =>
         hotel.rooms.some((room) => selectedRoomTypes.includes(room.type))
       )
     }
-
     // Filter by price ranges
     if (selectedPriceRanges.length > 0) {
       filtered = filtered.filter((hotel) => {
@@ -80,7 +76,6 @@ function AllHotels() {
         })
       })
     }
-
     // Sort
     if (selectedSortOption === 'Prix croissant') {
       filtered = [...filtered].sort((a, b) => a.price - b.price)
@@ -89,10 +84,8 @@ function AllHotels() {
     } else if (selectedSortOption === 'Du plus récent au plus ancien') {
       filtered = [...filtered].sort((a, b) => b.id - a.id)
     }
-
     return filtered
   }, [selectedRoomTypes, selectedPriceRanges, selectedSortOption])
-
   return (
     <Layout>
       <div
@@ -168,6 +161,7 @@ function AllHotels() {
                       }}
                       className="px-6 py-3 bg-customBlue text-white rounded-full hover:bg-safari-gold transition-colors font-medium shadow-md hover:shadow-lg"
                     >
+                      {' '}
                       View Details
                     </button>
                   </div>
@@ -200,6 +194,7 @@ function AllHotels() {
                 }}
                 className="hidden lg:block"
               >
+                {' '}
                 Clear
               </span>
             </div>
@@ -271,5 +266,4 @@ function AllHotels() {
     </Layout>
   )
 }
-
 export default AllHotels
