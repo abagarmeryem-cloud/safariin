@@ -1,21 +1,48 @@
-# safarinn
+# 🏨 Safarinn – Online Hotel Reservation Platform in Meknes
 
-This project was bootstrapped using **React + Vite**.
+A modern web platform dedicated to **online hotel reservations in Meknes**, allowing travelers to easily find accommodation and property owners to manage their listings efficiently.
 
-It provides a minimal setup to get React working in Vite with HMR and ESLint rules.
+---
 
-## Features
-- React with Fast Refresh
-- Vite for super-fast dev and build
-- ESLint preconfigured
-- Supports Babel, SWC, or OXC via Vite plugins
+## 🚀 Project Objectives
 
-## React Compiler
-The React Compiler is disabled in this template for performance reasons.  
-To enable it, see the official documentation:  
-https://react.dev/learn/react-compiler/installation
+### For Travelers:
 
-## TypeScript (Optional)
-If you want to use TypeScript with type-aware ESLint rules, check the official TS template:  
-https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts
+* 🔎 Search hotels by **price, location, category**
+* 📅 Book online quickly and easily
+* ⭐ View ratings and reviews
 
+## 🛠️ Technologies Used
+
+### Frontend
+
+* ⚛️ React.js
+* 🎨 Tailwind CSS
+---
+
+## 🖥️ User Interface
+
+* Modern Glassmorphism design
+* Built-in Dark Mode
+* Fully responsive (Mobile, Tablet, Desktop)
+* Smooth and intuitive user experience
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/safarinn.git
+cd safarinn
+```
+
+### 2️⃣ Install dependencies
+
+Frontend:
+
+```bash
+npm install
+npm start
+```
